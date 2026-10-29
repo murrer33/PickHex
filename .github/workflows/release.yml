@@ -49,11 +49,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Build PickHex.app
+      - name: Build PickHex.app & Archive with ditto
         run: |
           python build.py
-          cd dist
-          zip -r PickHex-macOS.zip PickHex.app
+          mkdir -p dist/mac_pkg
+          mv dist/PickHex.app dist/mac_pkg/
+          cat << 'EOF' > "dist/mac_pkg/Open PickHex (First Time).command"
+          #!/bin/bash
+          DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+          xattr -cr "$DIR/PickHex.app"
+          open "$DIR/PickHex.app"
+          EOF
+          chmod +x "dist/mac_pkg/Open PickHex (First Time).command"
+          ditto -c -k --sequesterRsrc dist/mac_pkg dist/PickHex-macOS.zip
 
       - name: Upload macOS Artifact
         uses: actions/upload-artifact@v4

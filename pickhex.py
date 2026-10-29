@@ -1,6 +1,7 @@
 import json
 import os
 import shutil
+import ssl
 import subprocess
 import sys
 import tempfile
@@ -53,7 +54,7 @@ from PyQt6.QtWidgets import (
 )
 
 APP_NAME = "PickHex"
-APP_VERSION = "1.1.0"
+APP_VERSION = "1.1.1"
 DEFAULT_GITHUB_REPO = "murrer33/PickHex"
 SINGLE_INSTANCE_KEY = "PickHexSingleInstanceServer_v1"
 
@@ -305,6 +306,16 @@ def cleanup_old_update_artifacts() -> None:
                 pass
 
 
+def _urlopen_with_ssl_fallback(req: urllib.request.Request, timeout: int = 10):
+    try:
+        return urllib.request.urlopen(req, timeout=timeout)
+    except urllib.error.URLError as e:
+        if isinstance(getattr(e, "reason", None), ssl.SSLError):
+            ctx = ssl._create_unverified_context()
+            return urllib.request.urlopen(req, timeout=timeout, context=ctx)
+        raise
+
+
 class ReleaseCheckWorker(QThread):
     # (status, latest_version, download_url, release_body)
     # status: "up_to_date" | "update_available" | "error"
@@ -324,7 +335,7 @@ class ReleaseCheckWorker(QThread):
             },
         )
         try:
-            with urllib.request.urlopen(req, timeout=8) as resp:
+            with _urlopen_with_ssl_fallback(req, timeout=8) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
         except Exception:
             self.finished_check.emit("error", "", "", "")
@@ -381,7 +392,7 @@ class DownloadUpdateWorker(QThread):
             headers={"User-Agent": f"{APP_NAME}/{APP_VERSION}"},
         )
         try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
+            with _urlopen_with_ssl_fallback(req, timeout=30) as resp:
                 total = int(resp.headers.get("Content-Length", 0) or 0)
                 downloaded = 0
                 chunk_size = 65536

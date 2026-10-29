@@ -79,18 +79,28 @@ def main() -> None:
     print("Building PickHex executable...")
     subprocess.run(cmd, cwd=str(root), check=True)
 
-    # On macOS, mark Info.plist with LSUIElement=True so it runs exclusively
-    # in the top Menu Bar without showing a Dock icon.
+    # On macOS, update Info.plist and RE-SIGN the bundle with ad-hoc codesign
+    # so macOS Gatekeeper / Apple Silicon does not reject the modified Info.plist!
     if sys.platform == "darwin":
-        plist_path = root / "dist" / "PickHex.app" / "Contents" / "Info.plist"
+        app_path = root / "dist" / "PickHex.app"
+        plist_path = app_path / "Contents" / "Info.plist"
         if plist_path.exists():
             with plist_path.open("rb") as f:
                 plist_data = plistlib.load(f)
             plist_data["LSUIElement"] = True
             plist_data["NSHighResolutionCapable"] = True
+            plist_data["CFBundleShortVersionString"] = "1.1.1"
+            plist_data["CFBundleVersion"] = "1.1.1"
             with plist_path.open("wb") as f:
                 plistlib.dump(plist_data, f)
             print("Configured macOS Info.plist with LSUIElement=True (Menu Bar mode).")
+
+            # Critical: Re-sign PickHex.app deeply after modifying Info.plist
+            subprocess.run(
+                ["codesign", "--force", "--deep", "--sign", "-", str(app_path)],
+                check=True,
+            )
+            print("Re-signed PickHex.app with ad-hoc signature.")
 
     print("\nBuild complete! Output is located in:", root / "dist")
 

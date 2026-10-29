@@ -16,6 +16,7 @@ No Python installation required! Grab the latest standalone package from **[GitH
 
 * 🪟 **Windows:** Download **[`PickHex.exe`](https://github.com/murrer33/PickHex/releases/latest/download/PickHex.exe)** (Single-file portable executable)
 * 🍎 **macOS:** Download **[`PickHex-macOS.zip`](https://github.com/murrer33/PickHex/releases/latest/download/PickHex-macOS.zip)** (Native Menu Bar `.app` bundle)
+  * *Note for macOS users:* Since PickHex is a free open-source project without a paid Apple Developer subscription, on first launch double-click **`Open PickHex (First Time).command`** included in the zip (or run `xattr -cr PickHex.app` in Terminal) to bypass Gatekeeper quarantine.
 
 ---
 
