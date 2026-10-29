@@ -1,56 +1,83 @@
 # 🎨 PickHex — Free & Open-Source System Tray / Menu Bar Color Picker
 
-**PickHex**, Windows'ta **Sistem Tepsisinde (Hidden Icons)** ve macOS'ta **Üst Menü Çubuğunda (Menu Bar)** arka planda sessizce çalışan, tek tıkla ekrandaki herhangi bir pikselin rengini (`HEX`, `RGB`, `HSL`, `CSS` veya `Tailwind`) anında panoya kopyalayan **%100 ücretsiz ve açık kaynaklı** bir renk seçici (eyedropper) aracıdır.
+[![Latest Release](https://img.shields.io/github/v/release/murrer33/PickHex?label=Download%20Latest&style=for-the-badge&color=6366F1)](https://github.com/murrer33/PickHex/releases/latest)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS-2EC4B6?style=for-the-badge)](https://github.com/murrer33/PickHex/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-FF9F1C?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-> 💡 **Why PickHex?** Many menu-bar color pickers are paid ($8+) or limited to macOS only. **PickHex** is 100% free, open-source, lightweight, and works natively on both **Windows** and **macOS** with zero-UI bloat.
+**PickHex** is a fast, lightweight, zero-bloat color picker (eyedropper) that lives quietly in your **Windows System Tray (Hidden Icons)** and **macOS Menu Bar**. Click the icon, click any pixel on your screen, and the color code (`HEX`, `RGB`, `HSL`, `CSS`, or `Tailwind`) is instantly copied to your clipboard.
+
+> 💡 **Why PickHex?** Many menu-bar color pickers cost $8+ or only support macOS. **PickHex** is 100% free, open-source, cross-platform (**Windows & macOS**), and built for speed with a zero-UI workflow.
 
 ---
 
-## ✨ Özellikler / Features
+## 📥 Download (Ready-to-Use)
 
-* **🚀 Tek Tıkla Renk Seçimi (One-Click Eyedropper):**
-  * **Windows:** Sağ alttaki *Hidden Icons (Sistem Tepsisi)* içindeki **PickHex** ikonuna sol tıkladığınız anda ekranda canlı büyüteç açılır.
-  * **macOS:** Sağ üstteki *Menu Bar* içindeki **PickHex** ikonundan **"Ekrandan Renk Seç / Pick Color"** seçeneğine tıkladığınızda büyüteç devreye girer.
-* **🔍 Akıllı Büyüteç Kontrolleri (Interactive Magnifier Controls):**
-  * **Fare Tekerleği (Scroll Wheel):** Büyüteç yakınlaştırma oranını (`3x` - `9x`) anlık olarak değiştirir.
-  * **Yön Tuşları (`↑` `↓` `←` `→`):** İmleci **1 piksel** hassasiyetle kaydırarak ince çizgileri ve kenarlıkları yakalamanızı sağlar.
-  * **`Tab` Tuşu:** Büyüteç açıkken kopyalama formatları (`HEX` -> `RGB` -> `HSL` -> `CSS` -> `Tailwind`) arasında anında geçiş yapar.
-* **🎨 Penceresiz Ton & Gölge Üretici (Zero-UI Shades, Tints & Harmony):**
-  * Sağ tık menüsündeki **Son Seçilen Renkler** altında herhangi bir rengin üzerine geldiğinizde; o rengin **3 açık tonunu (+20%, +40%, +60%)**, **3 koyu gölgesini (-20%, -40%, -60%)** ve **Zıt (Complementary) rengini** hiçbir ek pencere açmadan tek tıkla kopyalayabilirsiniz!
-* **📋 Çoklu Format Desteği (6 Developer Formats):**
+No Python installation required! Grab the latest standalone package from **[GitHub Releases](https://github.com/murrer33/PickHex/releases/latest)**:
+
+* 🪟 **Windows:** Download **[`PickHex.exe`](https://github.com/murrer33/PickHex/releases/latest/download/PickHex.exe)** (Single-file portable executable)
+* 🍎 **macOS:** Download **[`PickHex-macOS.zip`](https://github.com/murrer33/PickHex/releases/latest/download/PickHex-macOS.zip)** (Native Menu Bar `.app` bundle)
+
+---
+
+## ✨ Features
+
+* **🚀 One-Click Instant Eyedropper:**
+  * **Windows:** Left-click the **PickHex** icon in your System Tray (*Hidden Icons*) to immediately launch the live screen magnifier.
+  * **macOS:** Click the **PickHex** icon in the top Menu Bar and select **"Pick Color from Screen"**.
+* **🔍 Interactive Magnifier Controls (Zero-UI):**
+  * **Mouse Scroll Wheel:** Dynamically adjust the magnifier zoom level (`3x` to `9x`) in real time.
+  * **Arrow Keys (`↑` `↓` `←` `→`):** Nudge the cursor by **1 exact pixel** to effortlessly capture thin borders and text.
+  * **`Tab` Key:** Cycle through copy formats (`HEX` → `HEX_RAW` → `RGB` → `HSL` → `CSS` → `TAILWIND`) live inside the magnifier HUD.
+* **🎨 Instant Shades, Tints & Harmonies:**
+  * Hover over any color under **Recent Colors** in the right-click menu to instantly copy **3 Lighter Tints (`+20%`, `+40%`, `+60%`)**, **3 Darker Shades (`-20%`, `-40%`, `-60%`)**, or its **Complementary Color** without opening a single window.
+* **📋 6 Developer Copy Formats:**
   * `HEX` (`#FF5733`)
   * `HEX Raw` (`FF5733`)
   * `RGB` (`rgb(255, 87, 51)`)
   * `HSL` (`hsl(11, 100%, 60%)`)
   * `CSS` (`color: #FF5733;`)
   * `Tailwind` (`bg-[#FF5733]`)
-* **🔔 Anında Bildirim (Toast Notification):** Renge tıkladığınız anda kodu panoya kopyalar ve ekranda seçtiğiniz dile göre (`"Renk kodu kopyalandı: #FF5733"` / `"Color code copied: #FF5733"`) bildirim gösterir.
-* **🌍 Türkçe & İngilizce Dil Desteği:** İlk açılışta dil seçimi sorar; daha sonra sağ tık menüsünden istediğiniz zaman değiştirebilirsiniz.
-* **⚡ Başlangıçta Çalıştır (Run on Startup):** Bilgisayar açıldığında otomatik olarak arka planda başlama seçeneği.
+* **🔔 Crisp On-Screen Toast Notification:** Displays a brief, non-intrusive pill notification with a live color swatch confirming the copied code.
+* **🔄 Built-in Self-Updater:** Click **"Check for Updates"** in the tray menu to automatically download and install new releases in-place—no manual uninstall or reinstall needed.
+* **🌍 Multi-Language Support (English & Turkish):** Choose your preferred language on first launch or switch anytime from the tray menu.
+* **⚡ Run on System Startup:** Optional one-click toggle to launch automatically when you log in.
 
 ---
 
-## 🖥️ Kurulum ve Kullanım / Installation & Usage
+## 🛠️ Running from Source & Building
 
-### 1. Hazır `.exe` / `.app` İle Kullanım
-* **Windows:** `PickHex.exe` dosyasını çift tıklayarak çalıştırın. İlk açılışta dilinizi (**Türkçe / English**) seçin. Uygulama sağ alttaki **Hidden Icons (Sistem Tepsisi)** bölümüne yerleşecektir.
-* **macOS:** `PickHex.app` uygulamasını çalıştırın. Uygulama Dock'ta yer kaplamadan doğrudan üstteki **Menu Bar**'a yerleşir.
-
-### 2. Kaynak Koddan Çalıştırma / Running from Source
+### Run from Source
 ```bash
 pip install -r requirements.txt
 python pickhex.py
 ```
-*(İlk kurulum dil seçimi ekranını tekrar görmek isterseniz `python pickhex.py --setup` komutuyla başlatabilirsiniz).*
+*(To re-open the first-time language selection dialog, run `python pickhex.py --setup`).*
 
-### 3. Kendi `.exe` veya `.app` Dosyanızı Derleme / Building Executable
+### Build Standalone Executable (`.exe` / `.app`)
 ```bash
 python build.py
 ```
-* Windows'ta `dist/PickHex.exe` tek dosya olarak üretilir.
-* macOS'ta `dist/PickHex.app` (Menu Bar uygulaması olarak) üretilir.
+* **Windows:** Generates a single-file `dist/PickHex.exe`.
+* **macOS:** Generates a native Menu Bar app bundle `dist/PickHex.app` (`LSUIElement=True`).
 
 ---
 
-## 📄 Lisans / License
+<details>
+<summary><b>🇹🇷 Türkçe Açıklama ve Kullanım Kılavuzu (Tıklayın)</b></summary>
+
+<br>
+
+**PickHex**, Windows'ta **Sistem Tepsisinde (Hidden Icons)** ve macOS'ta **Üst Menü Çubuğunda (Menu Bar)** arka planda sessizce çalışan, tek tıkla ekrandaki herhangi bir pikselin rengini anında panoya kopyalayan **%100 ücretsiz ve açık kaynaklı** bir renk seçici (eyedropper) aracıdır.
+
+### Öne Çıkan Özellikler
+* **Tek Tıkla Renk Seçimi:** Sağ alttaki *Hidden Icons* içindeki PickHex ikonuna sol tıkladığınız anda ekranda canlı büyüteç açılır, tıkladığınız yerin rengini kopyalar.
+* **Akıllı Büyüteç Kontrolleri:** Fare tekerleği ile zoom (`3x`-`9x`) yapabilir, yön tuşlarıyla imleci `1 piksel` kaydırabilir, `Tab` tuşuyla format değiştirebilirsiniz.
+* **Penceresiz Ton ve Gölge Üretici:** Sağ tık menüsündeki *Son Seçilen Renkler* altından her rengin açık tonlarını, koyu gölgelerini ve zıt rengini tek tıkla kopyalayabilirsiniz.
+* **Otomatik Güncelleme:** Sağ tık menüsündeki *"Güncellemeleri Kontrol Et"* butonu ile eski sürümü silmeye gerek kalmadan tek tıkla güncellenir.
+
+</details>
+
+---
+
+## 📄 License
 MIT License — Free forever.
