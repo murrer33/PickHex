@@ -10,18 +10,32 @@
 
 ---
 
-## 📥 Download (Ready-to-Use)
+## 📥 Download & Installation
 
-No Python installation required! Grab the latest standalone package from **[GitHub Releases](https://github.com/murrer33/PickHex/releases/latest)**:
+### 🍎 macOS (Recommended — Zero Gatekeeper Popups)
 
-* 🪟 **Windows:** Download **[`PickHex.exe`](https://github.com/murrer33/PickHex/releases/latest/download/PickHex.exe)** (Single-file portable executable)
-* 🍎 **macOS (Option 1 — 1-Click Terminal Install, No Gatekeeper Warning):**
-  Paste this into **Terminal** to install directly into `/Applications` and launch without any macOS security popups:
-  ```bash
-  curl -fsSL https://raw.githubusercontent.com/murrer33/PickHex/main/install-mac.sh | bash
-  ```
-* 🍎 **macOS (Option 2 — Manual `.zip` Download):** Download **[`PickHex-macOS.zip`](https://github.com/murrer33/PickHex/releases/latest/download/PickHex-macOS.zip)**
-  * *How to bypass the macOS Gatekeeper popup:* Click **"Done"** on the popup, then open **System Settings → Privacy & Security**, scroll down, and click **"Open Anyway"** next to PickHex.
+**Option A — Via Homebrew (`brew`):**
+Automatically installs `PickHex.app` to `/Applications` and clears macOS quarantine so it opens with zero security warnings:
+```bash
+brew tap murrer33/pickhex https://github.com/murrer33/PickHex
+brew install --cask pickhex
+```
+
+**Option B — 1-Line Quick Installer (No Homebrew required):**
+Paste into **Terminal** to install directly into `/Applications` and launch immediately without any Gatekeeper popup:
+```bash
+curl -fsSL https://raw.githubusercontent.com/murrer33/PickHex/main/install-mac.sh | bash
+```
+
+**Option C — Direct `.zip` Download:**
+* Download **[`PickHex-macOS.zip`](https://github.com/murrer33/PickHex/releases/latest/download/PickHex-macOS.zip)**
+* *(If macOS shows an unverified developer prompt on first launch: open **System Settings → Privacy & Security → Open Anyway**).*
+
+---
+
+### 🪟 Windows
+
+* Download **[`PickHex.exe`](https://github.com/murrer33/PickHex/releases/latest/download/PickHex.exe)** (Single-file portable executable — no installation needed)
 
 ---
 
